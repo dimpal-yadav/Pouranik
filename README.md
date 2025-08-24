@@ -116,11 +116,9 @@ Start here:
 
 ### 🙌 **Thank You, Contributors!**
 > Thank you once again to all our contributors! Your efforts are truly appreciated. 💖👏
-<p align="center">
-  <a href="https://github.com/BhaktiMore18/Pouranik/graphs/contributors">
-    <img src="https://api.vaunt.dev/v1/github/entities/BhaktiMore18/repositories/Pouranik/contributors?format=svg&limit=54" width="700" height="250" />
-  </a>
-</p>
+<a href="https://github.com/bhaktimore18/pouranik/graphs/contributors">
+  <img src="https://contrib.rocks/image?repo=bhaktimore18/Pouranik" />
+</a>
 
 <img src="https://user-images.githubusercontent.com/74038190/212284100-561aa473-3905-4a80-b561-0d28506553ee.gif" width="100%">
 
