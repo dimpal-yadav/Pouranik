@@ -72,33 +72,127 @@ Want to help bring these features to life? **Scroll to the contributions section
 
 ```
 Pouranik/
-├── .github/ # GitHub configs & workflows
-│ ├── workflows/ # CI/CD pipeline
-│ │ └── cicd.yaml
-│ └── ISSUE_TEMPLATE/ # Issue templates
-│
-├── backend/ # Backend service (APIs & business logic)
-│ ├── src/ # Source code
-│ └── package.json
-│
-├── frontend/ # Frontend (React/Next.js App)
-│ ├── src/ # Source code
-│ └── package.json
-│
-├── pr_artifacts/ # PR-specific artifacts
-│ └── pr_#116/
-│
+├── .github/                     
+│   ├── ISSUE_TEMPLATE/
+│   │   ├── bug_report.md
+│   │   ├── custom.md
+│   │   └── feature_request.md
+│   └── workflows/
+│       ├── cicd.yaml
+│       ├── greetings.yaml
+│       └── update_contributors.yaml
+├── backend/                     
+│   ├── Controllers/             
+│   │   ├── book.controller.js
+│   │   ├── genbook.controller.js
+│   │   ├── review.controller.js
+│   │   └── user.controller.js
+│   ├── DBConfig/                # Database connection logic
+│   │   └── dbConnect.js
+│   ├── Middlewares/             # Authentication and middleware logic
+│   │   └── auth.js
+│   ├── Models/                  # Mongoose schemas/models
+│   │   ├── bookrev.model.js
+│   │   └── user.model.js
+│   ├── Routes/                  # API route definitions
+│   │   ├── books.route.js
+│   │   ├── genbook.route.js
+│   │   ├── index.js
+│   │   ├── reviews.route.js
+│   │   └── user.route.js
+│   ├── .env.example
+│   ├── .eslintrc.json
+│   ├── .gitignore
+│   ├── package-lock.json
+│   ├── package.json
+│   └── server.js
+frontend/
+├── public/                               # Public static files
+├── src/                                  # Source code root
+│   ├── assets/                           # Images, icons, and animation assets
+│   │   ├── _animation/                   # Animation JSON/Lottie files
+│   │   ├── book-club.png
+│   │   ├── cover.png
+│   │   ├── fantasy.png
+│   │   ├── mystery.png
+│   │   ├── react.svg
+│   │   ├── romance.png
+│   │   ├── science-fic.png
+│   │   └── young-adult.png
+│   ├── components/                       # Reusable React components
+│   │   ├── _global/                      # Common app-wide components
+│   │   ├── Library_components/           # UI elements for user library/book management
+│   │   ├── ReadingTracker/               # Reading tracking components
+│   │   ├── Reviews/                      # Book review display/form components
+│   │   ├── AuthForm.jsx
+│   │   ├── AuthorRecommendation.jsx
+│   │   ├── BookCard.jsx
+│   │   ├── Footer.jsx
+│   │   ├── Navbar.jsx
+│   │   ├── NoBookFound.jsx
+│   │   ├── NoCover.jsx
+│   │   ├── Pagination.jsx
+│   │   ├── QuickFilters.jsx
+│   │   ├── SearchAutocomplete.jsx
+│   │   ├── SortAndFilterControls.jsx
+│   │   └── TourOverlay.jsx
+│   ├── pages/                            # Top-level route/page components
+│   │   ├── about.jsx
+│   │   ├── AISummarySection.jsx
+│   │   ├── AnalyticsPage.jsx
+│   │   ├── BookDetail.jsx
+│   │   ├── club.css
+│   │   ├── ClubPage.jsx
+│   │   ├── community.css
+│   │   ├── Community.jsx
+│   │   ├── Explore.jsx
+│   │   ├── Explore.module.css
+│   │   ├── Genres.css
+│   │   ├── Genres.jsx
+│   │   ├── Home.jsx
+│   │   ├── Library.jsx
+│   │   ├── Reviews.jsx
+│   │   ├── SignIn.jsx
+│   │   └── TimerPage.jsx
+│   ├── routes/                           # App-level routing configuration
+│   │   └── AppRoutes.jsx
+│   ├── services/                         # Network/API service modules
+│   │   ├── AISummaryService.js
+│   │   ├── bookService.js
+│   │   └── tokenRefresher.js
+│   ├── utils/                            # Utility/helper functions
+│   │   └── filterPreferences.js
+│   ├── App.css                           # Global app CSS
+│   ├── App.jsx                           # Root React app component
+│   ├── index.css                         # Additional global CSS
+│   ├── main.jsx                          # React/Vite entry point
+│   └── .env.example                      # Example env variables for frontend
+├── .env.example                          # Project-wide env config example
+├── .gitignore                            # Git ignore rules (frontend)
+├── .nmrc                                 # Node version manager config
+├── eslint.config.js                      # ESLint configuration
+├── index.html                            # Main HTML file for Vite build
+├── package-lock.json                     # NPM lock file
+├── package.json                          # NPM dependencies/scripts
+├── README.md                             # Frontend documentation
+├── SETUP.md                              # Setup instructions
+├── tailwind.config.js                    # Tailwind CSS configuration
+├── vercel.json                           # Vercel deployment configuration
+├── vite.config.js                        # Vite build configuration
+
+├── pr_artifacts/                # PR-specific assets
+│   └── (pr_#116/)
 ├── .gitignore
-├── API_KEY_SETUP_GUIDE.md # API key setup instructions
-├── CODE_OF_CONDUCT.md # Contribution guidelines
-├── CONTRIBUTING.md # Contribution workflow
-├── LICENSE # MIT License
-├── README.md # Project documentation
-├── SECURITY.md # Security policy
-├── contributors.png # Contributors image
-├── package.json # Project dependencies
+├── API_KEY_SETUP_GUIDE.md
+├── CODE_OF_CONDUCT.md
+├── CONTRIBUTING.md
+├── contributors.png
+├── LICENSE
 ├── package-lock.json
-└── setup.sh # Setup script
+├── package.json
+├── README.md
+├── SECURITY.md
+└── setup.sh
 
 ```
 ---
