@@ -72,33 +72,125 @@ Want to help bring these features to life? **Scroll to the contributions section
 
 ```
 Pouranik/
-├── .github/ # GitHub configs & workflows
-│ ├── workflows/ # CI/CD pipeline
-│ │ └── cicd.yaml
-│ └── ISSUE_TEMPLATE/ # Issue templates
-│
-├── backend/ # Backend service (APIs & business logic)
-│ ├── src/ # Source code
-│ └── package.json
-│
-├── frontend/ # Frontend (React/Next.js App)
-│ ├── src/ # Source code
-│ └── package.json
-│
-├── pr_artifacts/ # PR-specific artifacts
-│ └── pr_#116/
-│
-├── .gitignore
-├── API_KEY_SETUP_GUIDE.md # API key setup instructions
-├── CODE_OF_CONDUCT.md # Contribution guidelines
-├── CONTRIBUTING.md # Contribution workflow
-├── LICENSE # MIT License
-├── README.md # Project documentation
-├── SECURITY.md # Security policy
-├── contributors.png # Contributors image
-├── package.json # Project dependencies
+├── .github/                          # GitHub configuration files
+│   ├── ISSUE_TEMPLATE/               # Issue/PR template markdowns
+│   │   ├── bug_report.md
+│   │   ├── custom.md
+│   │   └── feature_request.md
+│   └── workflows/                    # GitHub Actions workflows (CI/CD pipeline)
+│       ├── cicd.yaml
+│       ├── greetings.yaml
+│       └── update_contributors.yaml
+├── backend/                          # Backend (Node.js/Express API)
+│   ├── Controllers/                  # API route controllers (business logic)
+│   │   ├── book.controller.js
+│   │   ├── genbook.controller.js
+│   │   ├── review.controller.js
+│   │   └── user.controller.js
+│   ├── DBConfig/                     # Database connection utilities
+│   │   └── dbConnect.js
+│   ├── Middlewares/                  # Middleware (auth, etc.)
+│   │   └── auth.js
+│   ├── Models/                       # Mongoose models
+│   │   ├── bookrev.model.js
+│   │   └── user.model.js
+│   ├── Routes/                       # Route definitions (Express routers)
+│   │   ├── books.route.js
+│   │   ├── genbook.route.js
+│   │   ├── index.js
+│   │   ├── reviews.route.js
+│   │   └── user.route.js
+│   ├── .env.example                  # Example environment variables
+│   ├── .eslintrc.json                # ESLint config for backend
+│   ├── .gitignore                    # Backend ignore rules
+│   ├── package-lock.json
+│   ├── package.json
+│   └── server.js                     # API server entry point
+├── frontend/                         # Frontend (React + Vite)
+│   ├── public/                       # Public assets (served at root)
+│   ├── src/                          # All frontend source code
+│   │   ├── assets/                   # Images and animation assets
+│   │   │   ├── _animation/           # Animation JSON/Lottie files
+│   │   │   ├── book-club.png
+│   │   │   ├── cover.png
+│   │   │   ├── fantasy.png
+│   │   │   ├── mystery.png
+│   │   │   ├── react.svg
+│   │   │   ├── romance.png
+│   │   │   ├── science-fic.png
+│   │   │   └── young-adult.png
+│   │   ├── components/               # Component modules by feature/type
+│   │   │   ├── _global/                  # Common, shared UI components
+│   │   │   ├── Library_components/       # Components for user's library
+│   │   │   ├── ReadingTracker/           # Reading tracker UI components
+│   │   │   ├── Reviews/                  # Book reviews UI
+│   │   │   ├── AuthForm.jsx
+│   │   │   ├── AuthorRecommendation.jsx
+│   │   │   ├── BookCard.jsx
+│   │   │   ├── Footer.jsx
+│   │   │   ├── Navbar.jsx
+│   │   │   ├── NoBookFound.jsx
+│   │   │   ├── NoCover.jsx
+│   │   │   ├── Pagination.jsx
+│   │   │   ├── QuickFilters.jsx
+│   │   │   ├── SearchAutocomplete.jsx
+│   │   │   ├── SortAndFilterControls.jsx
+│   │   │   └── TourOverlay.jsx
+│   │   ├── pages/                    # Page-level React components (routes/views)
+│   │   │   ├── about.jsx
+│   │   │   ├── AISummarySection.jsx
+│   │   │   ├── AnalyticsPage.jsx
+│   │   │   ├── BookDetail.jsx
+│   │   │   ├── club.css
+│   │   │   ├── ClubPage.jsx
+│   │   │   ├── community.css
+│   │   │   ├── Community.jsx
+│   │   │   ├── Explore.jsx
+│   │   │   ├── Explore.module.css
+│   │   │   ├── Genres.css
+│   │   │   ├── Genres.jsx
+│   │   │   ├── Home.jsx
+│   │   │   ├── Library.jsx
+│   │   │   ├── Reviews.jsx
+│   │   │   ├── SignIn.jsx
+│   │   │   └── TimerPage.jsx
+│   │   ├── routes/                   # App-level routing
+│   │   │   └── AppRoutes.jsx
+│   │   ├── services/                 # Service layer (API/network helpers)
+│   │   │   ├── AISummaryService.js
+│   │   │   ├── bookService.js
+│   │   │   └── tokenRefresher.js
+│   │   ├── utils/                    # Utility/helper functions
+│   │   │   └── filterPreferences.js
+│   │   ├── App.css                   # Global app CSS
+│   │   ├── App.jsx                   # Entry React component
+│   │   ├── index.css                 # Additional global CSS
+│   │   └── main.jsx                  # React/Vite bootstrap entry
+│   ├── .env.example                  # Example env vars for frontend
+│   ├── .gitignore                    # Frontend ignore rules
+│   ├── .nmrc
+│   ├── eslint.config.js              # ESLint config (frontend)
+│   ├── index.html                    # Vite HTML template
+│   ├── package-lock.json
+│   ├── package.json
+│   ├── README.md
+│   ├── SETUP.md                      # Frontend setup instructions
+│   ├── tailwind.config.js            # Tailwind CSS config
+│   ├── vercel.json                   # Vercel deployment config
+│   └── vite.config.js                # Vite build config
+├── pr_artifacts/                     # Artifacts related to pull requests
+│   └── (pr_#116/)
+├── .gitignore                        # Top-level ignore rules
+├── API_KEY_SETUP_GUIDE.md            # API key setup instructions
+├── CODE_OF_CONDUCT.md                # Community code of conduct
+├── CONTRIBUTING.md                   # Contributing guide
+├── contributors.png                  # Contributor image/banner
+├── LICENSE                           # Project license (MIT)
 ├── package-lock.json
-└── setup.sh # Setup script
+├── package.json
+├── README.md
+├── SECURITY.md                       # Security policy/process
+└── setup.sh                          # Project setup shell script
 
 ```
 ---
