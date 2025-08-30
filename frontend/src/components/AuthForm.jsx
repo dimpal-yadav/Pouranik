@@ -103,13 +103,13 @@ const AuthForm = ({ formType, isDarkMode }) => {
   return (
     <div className="login-container-wrapper w-full">
       {/* Heading */}
-<h1 className="text-4xl font-extrabold text-center mb-10 
+{/* <h1 className="text-4xl font-extrabold text-center mb-10 
   bg-gradient-to-r from-teal-400 via-teal-500 to-teal-600 
   bg-clip-text text-transparent 
   drop-shadow-[0_0_5px_rgba(20,184,166,0.7)] 
   tracking-wide">
-  Contact Form
-</h1>
+  Sign-in
+</h1> */}
 
       <div className="login-container flex items-center justify-center w-full min-h-[60vh]">
         <div
