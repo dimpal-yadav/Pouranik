@@ -6,6 +6,8 @@ import { LiaBookSolid } from "react-icons/lia";
 import { TbCategory } from "react-icons/tb";
 import { GiInspiration } from "react-icons/gi";
 import { TbTargetArrow } from "react-icons/tb";
+import { CountUp } from "countup.js";
+
 
 export default function Home() {
   const observerRef = useRef(null);
@@ -35,6 +37,7 @@ export default function Home() {
   }
 }, []);
 
+const animatedRef = useRef(false);
   // Scroll reveal animation effect
   useEffect(() => {
     const observerCallback = (entries) => {
@@ -43,6 +46,34 @@ export default function Home() {
           entry.target.classList.add('animate-reveal');
         }
       });
+
+      // Animate stats numbers when stats section comes into view
+        const section = document.getElementById("stats-section");
+        if (!section) return;
+
+        const observer = new IntersectionObserver(
+          (entries) => {
+            if (entries[0].isIntersecting && !animatedRef.current) {
+              animatedRef.current = true; 
+
+              new CountUp("books-count", 40, {
+                duration: 2,
+              }).start();
+
+              new CountUp("languages-count", 100, {
+                duration: 2,
+              }).start();
+
+              observer.disconnect(); 
+            }
+          },
+          { threshold: 0.3 }
+        );
+
+        observer.observe(section);
+
+        return () => observer.disconnect();
+
     };
 
     observerRef.current = new IntersectionObserver(observerCallback, {
@@ -318,22 +349,27 @@ export default function Home() {
       </section>
 
       {/* Stats Section */}
-      <section className="section-padding-sm scroll-reveal delay-200">
+      <section className="section-padding-sm scroll-reveal delay-200" id="stats-section">
         <div className="container-md">
-          <div className="card-modern text-center" data-tour="powered-by-google-books-section">
+          <div
+            className="card-modern text-center"
+            data-tour="powered-by-google-books-section"
+          >
             <h3
               className="text-2xl font-semibold mb-8"
               style={{ color: "var(--primary-700)" }}
             >
               Powered by Google Books
             </h3>
+
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+              {/* Books Available */}
               <div className="text-center">
                 <div
                   className="text-5xl font-bold mb-2"
                   style={{ color: "var(--accent-orange)" }}
                 >
-                  40M+
+                  <span id="books-count">0</span>M+
                 </div>
                 <div
                   className="text-lg"
@@ -342,12 +378,14 @@ export default function Home() {
                   Books Available
                 </div>
               </div>
+
+              {/* Languages */}
               <div className="text-center">
                 <div
                   className="text-5xl font-bold mb-2"
                   style={{ color: "var(--accent-orange)" }}
                 >
-                  100+
+                  <span id="languages-count">0</span>+
                 </div>
                 <div
                   className="text-lg"
@@ -356,9 +394,11 @@ export default function Home() {
                   Languages
                 </div>
               </div>
+
+              {/* Possibilities */}
               <div className="text-center">
                 <div
-                  className="text-5xl font-bold mb-2"
+                  className="text-5xl font-bold mb-2 animate-pulse"
                   style={{ color: "var(--accent-orange)" }}
                 >
                   ∞
