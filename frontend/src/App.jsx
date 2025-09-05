@@ -7,6 +7,7 @@ import TourOverlay from "./components/TourOverlay";
 import "./App.css";
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import BackToTop from "./components/BackToTop";
 
 function App() {
   const [isDarkMode, setIsDarkMode] = useState(() => {
@@ -107,7 +108,7 @@ return (
         </div>
       </main>
       <Footer isDarkMode={isDarkMode} />
-      <ScrollToTopButton />
+      <BackToTop/>  
       <ToastContainer position="top-right" autoClose={3000} />
       <TourOverlay
         step={{ ...tourSteps[tourStep], index: tourStep }}
@@ -117,7 +118,6 @@ return (
         onClose={handleTourClose}
         visible={tourOpen}
       />
-
     </div>
   );
 }
