@@ -412,7 +412,7 @@ export default function BookDetail() {
 
             </div>
           </div>
-          <div className={"`${cardBaseClasses}` !mt-2"}>
+          <div className={`${cardBaseClasses} !mt-10`}>
             <AuthorRecommendations
               currentBookId={id}
               author={info.authors}
