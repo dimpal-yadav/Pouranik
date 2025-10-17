@@ -1,55 +1,65 @@
-import { useState } from "react"
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import AuthForm from "../components/AuthForm";
-import { useNavigate } from "react-router-dom";  // 💡 Added for navigation to Forgot Password page
 
-const SignIn = ({ isDarkMode }) => {  // Add isDarkMode prop
-  const [formType, setFormType] = useState('signin');
-    const navigate = useNavigate(); // 💡 Hook to redirect user
+const SignIn = ({ isDarkMode }) => {
+  const [formType, setFormType] = useState("signin");
+  const navigate = useNavigate();
 
+  // Toggle between Sign-In and Sign-Up forms
   const handleChangeFormType = () => {
-    if(formType==='signin'){
-      setFormType('signup');
-    }else{
-      setFormType('signin');
-    }
-  }
+    setFormType(formType === "signin" ? "signup" : "signin");
+  };
 
-   const handleForgotPassword = () => { // 💡 New handler for Forgot Password link
-    navigate('/forgot-password');
-  }
+  // Navigate to Forgot Password page
+  const handleForgotPassword = () => {
+    navigate("/forgot-password");
+  };
 
   return (
     <div>
-      <section className={`flex justify-center items-center !w-full lg:flex  ${
-        formType === "signup"? "!mt-10" :"!mt-15" }`}>
-        <div className="w-full" >
-          {formType === 'signin' ? (
-            <section className='flex flex-col w-full rounded-2xl justify-center items-center '>
+      <section
+        className={`flex justify-center items-center w-full lg:flex ${
+          formType === "signup" ? "mt-10" : "mt-15"
+        }`}
+      >
+        <div className="w-full">
+          {formType === "signin" ? (
+            <section className="flex flex-col w-full rounded-2xl justify-center items-center">
               <AuthForm formType={formType} isDarkMode={isDarkMode} />
 
-               {/* 💡 Added "Forgot Password" link below the Sign-In form */}
+              {/* Forgot Password Link */}
               <p
                 onClick={handleForgotPassword}
                 className={`mt-3 text-sm cursor-pointer underline ${
-                  isDarkMode ? 'text-blue-400' : 'text-blue-600'
+                  isDarkMode ? "text-blue-400" : "text-blue-600"
                 }`}
               >
                 Forgot Password?
               </p>
-              
-              <p className={isDarkMode ? 'text-white' : 'text-gray-800'}>
-                Don't have an account ? 
-                <button className='cursor-pointer bg-white !text-black !py-1 !mx-2' onClick={handleChangeFormType}>
+
+              {/* Toggle to Sign-Up */}
+              <p className={isDarkMode ? "text-white" : "text-gray-800"}>
+                Don't have an account?
+                <button
+                  className="cursor-pointer bg-white text-black py-1 mx-2 rounded"
+                  onClick={handleChangeFormType}
+                >
                   Sign-Up
                 </button>
               </p>
             </section>
           ) : (
-            <section className='flex flex-col !space-y-8 rounded-2xl justify-center items-center'>
+            <section className="flex flex-col space-y-8 rounded-2xl justify-center items-center">
               <AuthForm formType={formType} isDarkMode={isDarkMode} />
-              <p className={isDarkMode ? 'text-white' : 'text-gray-800'}>
-                Already have an account ?
-                <button className='cursor-pointer bg-white !text-black !py-1 !mx-2' onClick={handleChangeFormType}>
+
+              {/* Toggle to Sign-In */}
+              <p className={isDarkMode ? "text-white" : "text-gray-800"}>
+                Already have an account?
+                <button
+                  className="cursor-pointer bg-white text-black py-1 mx-2 rounded"
+                  onClick={handleChangeFormType}
+                >
                   Sign-In
                 </button>
               </p>
@@ -58,7 +68,7 @@ const SignIn = ({ isDarkMode }) => {  // Add isDarkMode prop
         </div>
       </section>
     </div>
-  )
-}
+  );
+};
 
-export default SignIn
+export default SignIn;
